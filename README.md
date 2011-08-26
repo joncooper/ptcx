@@ -24,6 +24,8 @@ To use:
 
 TODO:
 
+- switch to a view that is just the current panel (i.e. 'Backlog' or 'My
+  Work', along with changing min-width
 - switch to a page action from a browser action
 - enable fast-loading of a single story if you click its URL
 - shift-click a story to copy its ID; ctrl-shift-click to copy its URL
