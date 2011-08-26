@@ -1,0 +1,14 @@
+{
+  "name": "Pivotal Tracker Chrome Extension",
+  "version": "0.0.1",
+  "description": "Make Pivotal Tracker less annoying.",
+  "permissions": [
+    "tabs",
+    "https://www.pivotaltracker.com/"
+  ],
+  "background_page": "bootstrap.html",
+  "browser_action": {
+    "default_icon": "icon.png",
+    "js": "jquery.min.js"
+  }
+}

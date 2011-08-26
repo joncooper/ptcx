@@ -1,0 +1,13 @@
+<html>
+  <head>
+    <script>
+      chrome.browserAction.onClicked.addListener(function(tab) {
+        chrome.tabs.executeScript(null, { file: "jquery.min.js" }, function() {
+          chrome.tabs.executeScript(null, { file: "ptcx.js" });
+        });
+      });
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
