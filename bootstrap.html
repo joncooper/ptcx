@@ -1,10 +1,34 @@
 <html>
   <head>
     <script>
+      <!-- Inject the content script -->
+
       chrome.browserAction.onClicked.addListener(function(tab) {
         chrome.tabs.executeScript(null, { file: "jquery.min.js" }, function() {
           chrome.tabs.executeScript(null, { file: "ptcx.js" });
         });
+      });
+
+      <!-- Force a reflow of the page by changing its dimensions. -->
+
+      var redraw = function() {
+         chrome.windows.getLastFocused(function(window) {
+          var dimensions = {};
+          dimensions.width = window.width;
+          dimensions.height = window.height;
+          dimensions.left = window.left;
+          dimensions.top = window.top;
+
+          dimensions.width--;
+          chrome.windows.update(window.id, dimensions);
+          dimensions.width++;
+          chrome.windows.update(window.id, dimensions);
+        });
+      }
+      chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
+        console.log(request);
+        if (request == 'redraw')
+          redraw();
       });
     </script>
   </head>
