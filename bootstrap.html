@@ -12,7 +12,7 @@
       <!-- Force a reflow of the page by changing its dimensions. -->
 
       var redraw = function() {
-         chrome.windows.getLastFocused(function(window) {
+        chrome.windows.getLastFocused(function(window) {
           var dimensions = {};
           dimensions.width = window.width;
           dimensions.height = window.height;

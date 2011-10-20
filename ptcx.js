@@ -1,10 +1,21 @@
 PTCX = function() {
+  var onlyShowingAcceptance = false;
   var onlyShowingBlocked = false;
   return {
     toggle_blocked: function() {
       jQuery('.item').has('.storyLabels > [title*=blocked_]').each(function() {
         $(this).closest('.item').fadeToggle();
       });
+    },
+    toggle_only_stories_for_acceptance: function() {
+      if (onlyShowingAcceptance) {
+        onlyShowingAcceptance = false;
+        $('.item').fadeIn();
+      } else {
+        onlyShowingAcceptance = true;
+        $('.item').hide();
+        $('.item > .finished, .item > .started, .item > .delivered').closest('.item').fadeIn();
+      }
     },
     toggle_only_blocked: function() {
       if (onlyShowingBlocked) {
@@ -20,9 +31,10 @@ PTCX = function() {
     toggle_accepted: function() {
       $('#current .item .accepted').fadeToggle();
     },
-    toggle_focused_mode: function() {
-      $('#header').fadeToggle();
-      chrome.extension.sendRequest('redraw');
+    toggle_header: function() {
+      $('#header').fadeToggle(function() {
+        chrome.extension.sendRequest('redraw');
+      });
     },
     insert_filtering_dropdown: function() {
       var stories_button = $('#stories_button');
@@ -47,8 +59,8 @@ PTCX = function() {
                             '</li>' +
                             '<li>' +
                               '<div class="inner">' +
-                                '<a id="toggle_focused" href="#">' +
-                                  '<span>Toggle focused</span>' +
+                                '<a id="toggle_only_stories_for_acceptance" href="#">' +
+                                  '<span>Toggle acceptance view</span>' +
                                 '</a>' +
                               '</div>' +
                             '</li>' +
@@ -56,6 +68,13 @@ PTCX = function() {
                               '<div class="inner">' +
                                 '<a id="toggle_accepted" href="#">' +
                                   '<span>Toggle accepted</span>' +
+                                '</a>' +
+                              '</div>' +
+                            '</li>' +
+                            '<li>' +
+                              '<div class="inner">' +
+                                '<a id="toggle_header" href="#">' +
+                                  '<span>Toggle header</span>' +
                                 '</a>'
                               '</div>' +
                             '</li>' +
@@ -74,8 +93,9 @@ PTCX = function() {
       });
       $('#toggle_blocked').click(PTCX.toggle_blocked);
       $('#toggle_only_blocked').click(PTCX.toggle_only_blocked);
-      $('#toggle_focused').click(PTCX.toggle_focused_mode);
       $('#toggle_accepted').click(PTCX.toggle_accepted);
+      $('#toggle_only_stories_for_acceptance').click(PTCX.toggle_only_stories_for_acceptance);
+      $('#toggle_header').click(PTCX.toggle_header);
     }
   }
 }();
@@ -107,4 +127,5 @@ DropdownMenu = {
   }
 };
 
+PTCX.toggle_header();
 PTCX.insert_filtering_dropdown();
