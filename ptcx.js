@@ -26,6 +26,7 @@ PTCX = function() {
         $('.item').hide();
         $('.storyLabels > [title^=needs_estimation]').closest('.item').fadeIn();
         $('.storyLabels > [title^=blocked_]').closest('.item').fadeIn();
+        $('.estimateIcon[title=Unestimated]').closest('.item').fadeIn();
       }
     },
     toggle_accepted: function() {
