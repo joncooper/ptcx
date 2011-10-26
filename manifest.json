@@ -1,7 +1,7 @@
 {
   "name": "Pivotal Tracker Chrome Extension",
   "version": "0.0.2",
-  "description": "Make Pivotal Tracker less annoying.",
+  "description": "Pimp my Tracker.",
   "permissions": [
     "tabs",
     "https://www.pivotaltracker.com/"
