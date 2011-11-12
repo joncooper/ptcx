@@ -1,11 +1,24 @@
 PTCX = function() {
   var onlyShowingAcceptance = false;
   var onlyShowingBlocked = false;
+  var onlyShowingNeedsEstimation = false;
   return {
     toggle_blocked: function() {
       jQuery('.item').has('.storyLabels > [title*=blocked_]').each(function() {
         $(this).closest('.item').fadeToggle();
       });
+    },
+    toggle_only_needs_estimation: function() {
+      if (onlyShowingNeedsEstimation) {
+        onlyShowingNeedsEstimation = false;
+        $('.item').fadeIn();
+      } else {
+        onlyShowingNeedsEstimation = true;
+        $('.item').hide();
+        $('.storyLabels > [title^=needs_estimation]').closest('.item').fadeIn();
+        $('.estimateIcon[title=Unestimated]').closest('.item').fadeIn();
+      }
+
     },
     toggle_only_stories_for_acceptance: function() {
       if (onlyShowingAcceptance) {
@@ -24,9 +37,7 @@ PTCX = function() {
       } else {
         onlyShowingBlocked = true;
         $('.item').hide();
-        $('.storyLabels > [title^=needs_estimation]').closest('.item').fadeIn();
         $('.storyLabels > [title^=blocked_]').closest('.item').fadeIn();
-        $('.estimateIcon[title=Unestimated]').closest('.item').fadeIn();
       }
     },
     toggle_accepted: function() {
@@ -51,6 +62,14 @@ PTCX = function() {
                                 '</a>' +
                               '</div>' +
                             '</li>' +
+                            '<li>' +
+                              '<div class="inner">' +
+                                '<a id="toggle_only_needs_estimation" href="#">' +
+                                  '<span>Toggle only needs estimation</span>' +
+                                '</a>' +
+                              '</div>' +
+                            '</li>' +
+
                             '<li>' +
                               '<div class="inner">' +
                                 '<a id="toggle_only_blocked" href="#">' +
@@ -94,6 +113,7 @@ PTCX = function() {
       });
       $('#toggle_blocked').click(PTCX.toggle_blocked);
       $('#toggle_only_blocked').click(PTCX.toggle_only_blocked);
+      $('#toggle_only_needs_estimation').click(PTCX.toggle_only_needs_estimation);
       $('#toggle_accepted').click(PTCX.toggle_accepted);
       $('#toggle_only_stories_for_acceptance').click(PTCX.toggle_only_stories_for_acceptance);
       $('#toggle_header').click(PTCX.toggle_header);

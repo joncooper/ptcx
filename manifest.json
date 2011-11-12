@@ -1,14 +1,14 @@
 {
   "name": "Pivotal Tracker Chrome Extension",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Pimp my Tracker.",
   "permissions": [
     "tabs",
-    "https://www.pivotaltracker.com/"
+    "https://www.pivotaltracker.com/*"
   ],
   "background_page": "bootstrap.html",
   "browser_action": {
-    "default_icon": "icon.png",
+    "default_icon": "tracker_filter.png",
     "js": "jquery.min.js"
   }
 }
