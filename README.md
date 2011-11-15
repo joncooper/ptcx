@@ -2,10 +2,16 @@
 
 Tweak the Pivotal Tracker UI for power users.
 
-At the moment, just
+Features:
 
-- click the toolbar button to minimize the header / menu so that more
-  room is available for reading stories.
+- Focused view: blocked stories only (tag: 'blocked_*')
+- Focused view: stories for acceptance meeting only (finished, started,
+  delivered)
+- Toggle display of the header pane (60px) and focus on a single project
+- Toggle display of blocked stories (tag: 'blocked_*')
+- Toggle display of stories that need estimation (tag:
+  'needs_estimation', or features with no estimate)
+- Toggle display of accepted stories
 
 To install:
 
@@ -18,14 +24,14 @@ To install:
 
 To use:
 
-- Go to Pivotal Tracker
-- Click 'Hello' button next to URL bar to show/hide toolbar & control
-  panel
+- Go to a project page in Pivotal Tracker (i.e.
+  https://www.pivotaltracker.com/projects/<something>)
+- Click the button next to URL bar to launch; the header bar should hide
+- Use the new 'Filter' menu
 
 TODO:
 
 - switch to a view that is just the current panel (i.e. 'Backlog' or 'My
   Work', along with changing min-width
-- switch to a page action from a browser action
 - enable fast-loading of a single story if you click its URL
 - shift-click a story to copy its ID; ctrl-shift-click to copy its URL
