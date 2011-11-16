@@ -2,6 +2,7 @@ PTCX = function() {
   var onlyShowingAcceptance = false;
   var onlyShowingBlocked = false;
   var onlyShowingNeedsEstimation = false;
+  var onlyShowingInFlight = false;
   return {
     toggle_blocked: function() {
       jQuery('.item').has('.storyLabels > [title*=blocked_]').each(function() {
@@ -38,6 +39,16 @@ PTCX = function() {
         onlyShowingBlocked = true;
         $('.item').hide();
         $('.storyLabels > [title^=blocked_]').closest('.item').fadeIn();
+      }
+    },
+    toggle_only_in_flight: function() {
+      if (onlyShowingInFlight) {
+        onlyShowingInFlight = false;
+        $('.item').fadeIn();
+      } else {
+        onlyShowingInFlight = true;
+        $('.item').hide();
+        $('.item > .started').closest('.item').fadeIn();
       }
     },
     toggle_accepted: function() {
@@ -92,6 +103,14 @@ PTCX = function() {
                               '</div>' +
                             '</li>' +
                             '<li>' +
+                            '<li>' +
+                              '<div class="inner">' +
+                                '<a id="toggle_only_in_flight" href="#">' +
+                                  '<span>Toggle only in-flight</span>' +
+                                '</a>' +
+                              '</div>' +
+                            '</li>' +
+                            '<li>' +
                               '<div class="inner">' +
                                 '<a id="toggle_header" href="#">' +
                                   '<span>Toggle header</span>' +
@@ -116,6 +135,7 @@ PTCX = function() {
       $('#toggle_only_needs_estimation').click(PTCX.toggle_only_needs_estimation);
       $('#toggle_accepted').click(PTCX.toggle_accepted);
       $('#toggle_only_stories_for_acceptance').click(PTCX.toggle_only_stories_for_acceptance);
+      $('#toggle_only_in_flight').click(PTCX.toggle_only_in_flight);
       $('#toggle_header').click(PTCX.toggle_header);
     }
   }
