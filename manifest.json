@@ -1,6 +1,6 @@
 {
   "name": "Pivotal Tracker Chrome Extension",
-  "version": "0.0.3",
+  "version": "0.0.6",
   "description": "Pimp my Tracker.",
   "permissions": [
     "tabs",
