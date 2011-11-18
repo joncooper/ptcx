@@ -12,9 +12,11 @@ PTCX = function() {
     toggle_only_needs_estimation: function() {
       if (onlyShowingNeedsEstimation) {
         onlyShowingNeedsEstimation = false;
+        $(this).find("li").css("list-style-type", "circle");
         $('.item').fadeIn();
       } else {
         onlyShowingNeedsEstimation = true;
+        $(this).find("li").css("list-style-type", "disc");
         $('.item').hide();
         $('.storyLabels > [title^=needs_estimation]').closest('.item').fadeIn();
         $('.estimateIcon[title=Unestimated]').closest('.item').fadeIn();
@@ -24,9 +26,11 @@ PTCX = function() {
     toggle_only_stories_for_acceptance: function() {
       if (onlyShowingAcceptance) {
         onlyShowingAcceptance = false;
+        $(this).find("li").css("list-style-type", "circle");
         $('.item').fadeIn();
       } else {
         onlyShowingAcceptance = true;
+        $(this).find("li").css("list-style-type", "disc");
         $('.item').hide();
         $('.item > .finished, .item > .started, .item > .delivered').closest('.item').fadeIn();
       }
@@ -34,9 +38,11 @@ PTCX = function() {
     toggle_only_blocked: function() {
       if (onlyShowingBlocked) {
         onlyShowingBlocked = false;
+        $(this).find("li").css("list-style-type", "circle");
         $('.item').fadeIn();
       } else {
         onlyShowingBlocked = true;
+        $(this).find("li").css("list-style-type", "disc");
         $('.item').hide();
         $('.storyLabels > [title^=blocked_]').closest('.item').fadeIn();
       }
@@ -44,9 +50,11 @@ PTCX = function() {
     toggle_only_in_flight: function() {
       if (onlyShowingInFlight) {
         onlyShowingInFlight = false;
+        $(this).find("li").css("list-style-type", "circle");
         $('.item').fadeIn();
       } else {
         onlyShowingInFlight = true;
+        $(this).find("li").css("list-style-type", "disc");
         $('.item').hide();
         $('.item > .started').closest('.item').fadeIn();
       }
@@ -69,14 +77,14 @@ PTCX = function() {
                             '<li>' +
                               '<div class="inner">' +
                                 '<a id="toggle_blocked" href="#">' +
-                                  '<span>Toggle blocked</span>' +
+                                  '<ul><li>Toggle blocked</li></ul>' +
                                 '</a>' +
                               '</div>' +
                             '</li>' +
                             '<li>' +
                               '<div class="inner">' +
                                 '<a id="toggle_only_needs_estimation" href="#">' +
-                                  '<span>Toggle only needs estimation</span>' +
+                                  '<ul><li style="margin-left: 12px;">Toggle only needs estimation</li></ul>' +
                                 '</a>' +
                               '</div>' +
                             '</li>' +
@@ -84,21 +92,21 @@ PTCX = function() {
                             '<li>' +
                               '<div class="inner">' +
                                 '<a id="toggle_only_blocked" href="#">' +
-                                  '<span>Toggle only blocked</span>' +
+                                  '<ul><li>Toggle only blocked</li></ul>' +
                                 '</a>' +
                               '</div>' +
                             '</li>' +
                             '<li>' +
                               '<div class="inner">' +
                                 '<a id="toggle_only_stories_for_acceptance" href="#">' +
-                                  '<span>Toggle acceptance view</span>' +
+                                  '<ul><li>Toggle acceptance view</li></ul>' +
                                 '</a>' +
                               '</div>' +
                             '</li>' +
                             '<li>' +
                               '<div class="inner">' +
                                 '<a id="toggle_accepted" href="#">' +
-                                  '<span>Toggle accepted</span>' +
+                                  '<ul><li>Toggle accepted</li></ul>' +
                                 '</a>' +
                               '</div>' +
                             '</li>' +
@@ -106,14 +114,14 @@ PTCX = function() {
                             '<li>' +
                               '<div class="inner">' +
                                 '<a id="toggle_only_in_flight" href="#">' +
-                                  '<span>Toggle only in-flight</span>' +
+                                  '<ul><li>Toggle only in-flight</li></ul>' +
                                 '</a>' +
                               '</div>' +
                             '</li>' +
                             '<li>' +
                               '<div class="inner">' +
                                 '<a id="toggle_header" href="#">' +
-                                  '<span>Toggle header</span>' +
+                                  '<ul><li>Toggle header</li></ul>' +
                                 '</a>'
                               '</div>' +
                             '</li>' +
@@ -130,6 +138,9 @@ PTCX = function() {
           overlay.hide();
         }
       });
+      $("#filter_dropdown .inner a li").css("margin-left", "12px");
+      $("#filter_dropdown .inner a li").css("list-style-type", "circle");
+
       $('#toggle_blocked').click(PTCX.toggle_blocked);
       $('#toggle_only_blocked').click(PTCX.toggle_only_blocked);
       $('#toggle_only_needs_estimation').click(PTCX.toggle_only_needs_estimation);
